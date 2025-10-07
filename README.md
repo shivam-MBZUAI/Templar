@@ -16,7 +16,7 @@ BLOCKCHAIN (Subtensor)
     │   ├── Validators (5 of them)
     │   └── Miners (100 of them)
     │
-    ├── Subnet 2 (Text Generation) ← Your test
+    ├── Subnet 2 (Text Generation)
     │   ├── Validators (3 of them)
     │   └── Miners (50 of them)
     │
