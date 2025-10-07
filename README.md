@@ -41,6 +41,17 @@ docker run --rm --name subtensor-local \
   - Each participant needs to be recognized
   - Contains their identity and their "bank account" for rewards
   - We create fake ones for testing (like practice IDs)
+### Create Fake Wallets (users)
+```bash
+for name in owner validator miner{1..3}; do
+  uvx --from bittensor-cli btcli wallet new_coldkey \
+      --wallet.name "$name" -p ~/.bittensor/wallets \
+      --n-words 24 --no-use-password
+  uvx --from bittensor-cli btcli wallet new_hotkey \
+      --wallet.name "$name" --wallet.hotkey default --n-words 24
+done
+```
+
 - Subnet: A specific "channel" where your AI models operate
   - Different subnets can focus on different types of learning
 - Validator: The "teacher" that grades the miners' work
