@@ -6,11 +6,10 @@
 
 ## The Big Picture
 You're setting up a test environment for an AI training system called Templar. Think of it as a mini version of what runs in production. Here's what the system does:
-- Blockchain (Subtensor): Manages rewards and coordination between AI models
--- Think of blockchain like a scoreboard that:
---- Keeps track of who's participating
---- Records who do good work
---- Gives out rewards
+- Blockchain (Subtensor): Manages rewards and coordination between AI models. Think of blockchain like a scoreboard that:
+  - Keeps track of who's participating
+  - Records who do good work
+  - Gives out rewards
 
 The blockchain ensures fairness - nobody can lie about their score.
 - Validator: Checks the quality of AI models' work
