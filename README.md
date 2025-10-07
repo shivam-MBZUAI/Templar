@@ -41,7 +41,7 @@ docker run --rm --name subtensor-local \
   - Each participant needs to be recognized
   - Contains their identity and their "bank account" for rewards
   - We create fake ones for testing (like practice IDs)
-### Create Fake Wallets (users)
+### Create Fake Wallets (participants)
 ```bash
 for name in owner validator miner{1..3}; do
   uvx --from bittensor-cli btcli wallet new_coldkey \
