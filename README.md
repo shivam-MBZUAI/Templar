@@ -91,7 +91,7 @@ done
 - Subnet: A specific "channel" where your AI models operate
   - Different subnets can focus on different types of learning
 ```bash
-# Create a subnet (like a TV channel)
+# Create a subnet
 uvx --from bittensor-cli btcli subnet create \
     --wallet.name owner --wallet.hotkey default --network local -y
 
