@@ -10,18 +10,16 @@ You're setting up a test environment for an AI training system called Templar. T
 - Validator: Checks the quality of AI models' work
 - Miners: AI models that do the actual training/learning
 - You're testing: Whether they all work together correctly
-BLOCKCHAIN (Subtensor)
-    ├── Subnet 1 (Image Recognition)
-    │   ├── Validators (5 of them)
-    │   └── Miners (100 of them)
-    │
-    ├── Subnet 2 (Text Generation)
-    │   ├── Validators (3 of them)
-    │   └── Miners (50 of them)
-    │
-    └── Subnet 3 (Translation)
-        ├── Validators (10 of them)
-        └── Miners (200 of them)
+- **BLOCKCHAIN (Subtensor)**
+  - **Subnet 1** (Image Recognition)
+    - Validators (5 of them)
+    - Miners (100 of them)
+  - **Subnet 2** (Text Generation) ← Your test
+    - Validators (3 of them)
+    - Miners (50 of them)
+  - **Subnet 3** (Translation)
+    - Validators (10 of them)
+    - Miners (200 of them)
 
 ## Clone the repository
 ```bash
