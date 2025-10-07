@@ -24,7 +24,19 @@ cd templar
   - Records who do good work, then gives out rewards
   - The blockchain ensures fairness; nobody can lie about their score.
   - The blockchain is the foundation, and subnets are the specialized spaces inside the blockchain where actual work happens.
+### Start the Blockchain (Subtensor)
+```bash
+# Use tmux to keep it running in the background
+tmux new -s subtensor
 
+# Pull and run the blockchain
+docker pull ghcr.io/opentensor/subtensor-localnet:v2.0.11
+docker run --rm --name subtensor-local \
+           -p 9944:9944 -p 9945:9945 \
+           ghcr.io/opentensor/subtensor-localnet:v2.0.11
+
+# Press Ctrl+B then D to detach (keep it running in background)
+```
 - Wallets: Digital identities for each participant (like usernames)
   - Each participant needs to be recognized
   - Contains their identity and their "bank account" for rewards
