@@ -90,6 +90,27 @@ done
 
 - Subnet: A specific "channel" where your AI models operate
   - Different subnets can focus on different types of learning
+```bash
+# Create a subnet (like a TV channel)
+uvx --from bittensor-cli btcli subnet create \
+    --wallet.name owner --wallet.hotkey default --network local -y
+
+# Register participants
+uvx --from bittensor-cli btcli subnet register \
+    --wallet.name validator --wallet.hotkey default --netuid 2 --network local -y
+
+for i in {1..3}; do
+  uvx --from bittensor-cli btcli subnet register \
+      --wallet.name "miner$i" --wallet.hotkey default \
+      --netuid 2 --network local -y
+done
+
+# Give validator stake (voting power)
+uvx --from bittensor-cli btcli stake add \
+    --wallet.name validator --wallet.hotkey default \
+    --netuid 2 --network local --unsafe -y
+```
+
 - Validator: The "teacher" that grades the miners' work
   - Checks if the miners (students) are actually learning
   - Has the power to give good or bad scores
