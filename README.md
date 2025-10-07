@@ -40,9 +40,14 @@ source "$HOME/.local/bin/env"
 # Install project dependencies
 uv sync --all-extras
 # Install Just (task runner)
-cargo install just
-# Install PM2 (process manager) 
-npm install -g pm2
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source "$HOME/.cargo/env" && cargo install just
+source "$HOME/.cargo/env" && just --version
+# Install PM2 (process manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm install --lts
+export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && npm install -g pm2
+export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && pm2 --version
 # Install dotenv
 npm install dotenv
 ```
