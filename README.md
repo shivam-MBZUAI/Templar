@@ -17,6 +17,21 @@ You're setting up a test environment for an AI training system called Templar. T
 git clone https://github.com/one-covenant/templar.git
 cd templar
 ```
+## Install Dependencies
+```bash
+# Install UV (Python package manager)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source "$HOME/.local/bin/env"
+
+# Install project dependencies
+uv sync --all-extras
+# Install Just (task runner)
+cargo install just
+# Install PM2 (process manager) 
+npm install -g pm2
+# Install dotenv
+npm install dotenv
+```
 
 ## What Each Component Does
 - Blockchain (Subtensor): A local blockchain that tracks who does what work
