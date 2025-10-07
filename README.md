@@ -66,6 +66,13 @@ for name in owner validator miner{1..3}; do
       --wallet.name "$name" --wallet.hotkey default --n-words 24
 done
 ```
+### Give Wallets Test Money(tokens)
+```bash
+for name in owner validator miner{1..3}; do
+  uvx --from bittensor-cli --with torch btcli wallet faucet \
+      --wallet.name "$name" --network local -y
+done
+```
 
 - Subnet: A specific "channel" where your AI models operate
   - Different subnets can focus on different types of learning
