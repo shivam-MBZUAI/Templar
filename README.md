@@ -23,8 +23,6 @@ BLOCKCHAIN (Subtensor) - Local Chain
         └── Miners (3+)
 ```
 
-**What makes this unique:** Miners train AI models collaboratively across the internet, sharing their learning (gradients) with each other through cloud storage (R2).
-
 ---
 
 ## Step 1: Clone Repository
