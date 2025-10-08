@@ -291,7 +291,7 @@ docker pull ghcr.io/opentensor/subtensor-localnet:v2.0.11
 
 ### 7.3 Start the Local Blockchain
 
-**⚠️ Important:** Use **12-second blocks** (not the default 250ms) to avoid faucet issues.
+** Important:** Use **12-second blocks** (not the default 250ms) to avoid faucet issues.
 
 ```bash
 docker run -d --name subtensor-localnet \
@@ -300,8 +300,8 @@ docker run -d --name subtensor-localnet \
 ```
 
 **Why `False`?** 
-- Default (no parameter) = 250ms blocks → Too fast for faucet PoW ❌
-- `False` parameter = 12-second blocks → Faucet works reliably ✅
+- Default (no parameter) = 250ms blocks → Too fast for faucet PoW 
+- `False` parameter = 12-second blocks → Faucet works reliably 
 
 ### 7.4 Verify It's Running
 ```bash
@@ -367,7 +367,7 @@ uvx --from bittensor-cli btcli wallet new_hotkey \
 
 Each wallet needs TAO tokens to interact with the blockchain. The local faucet provides free tokens for testing.
 
-**✅ If you used the `False` parameter in Step 7.3, the faucet will work smoothly!**
+** If you used the `False` parameter in Step 7.3, the faucet will work smoothly!**
 
 ### 9.1 Fund Each Hotkey
 
@@ -457,7 +457,7 @@ uvx --from bittensor-cli btcli subnet register \
 
 ### 10.3 Stake TAO to Validator (Optional - Has Known Issue)
 
-**⚠️ Known Issue:** The current btcli has a compatibility issue with subtensor v2.0.11. The staking command fails with:
+** Known Issue:** The current btcli has a compatibility issue with subtensor v2.0.11. The staking command fails with:
 ```
 An unknown error has occurred: Pallet "Swap" not found
 TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
@@ -492,7 +492,7 @@ uvx --from bittensor-cli btcli subnet list \
 
 ## Step 11: Run Your Tests!
 
-You've now completed the **one-time blockchain and wallet setup**! 🎉
+You've now completed the **one-time blockchain and wallet setup**! 
 
 ### 11.1 Quick Test Run
 ```bash
@@ -530,52 +530,19 @@ pm2 start ecosystem.config.js
 just test-run
 ```
 
----
-
-## Testing Workflow: Baseline → Quentin's TP → Your Fixes
-
-### Phase 1: Baseline Test (No TP)
-```bash
-cd ~/templar
-git checkout main
-# Edit hparams/hparams.json: set tp_degree=1, model_size="270M"
-just test-run
-# Let it run 5 windows, note WandB metrics
-pm2 stop all
-```
-
-### Phase 2: Test Quentin's TP Implementation
-```bash
-git checkout torchtitan-tp
-# Edit hparams/hparams.json: set tp_degree=2, model_size="270M"
-just test-run
-# Let it run 5 windows, identify issues
-pm2 stop all
-```
-
-### Phase 3: Your Fixes
-```bash
-# Make your fixes to Quentin's branch
-# Test each fix
-just test-run
-# Compare all metrics in WandB
-```
-
----
-
 ## Important Notes
 
-### ✅ **One-Time Setup (Done!):**
+###  **One-Time Setup (Done!):**
 - Docker blockchain (keeps running)
 - Wallets (persistent)
 - Subnet registration (permanent on local chain)
 
-### 🔄 **For Each Test Run:**
+###  **For Each Test Run:**
 - Edit config files (`hparams.json`, `ecosystem.config.js`)
 - Run `pm2 stop all` then `just test-run`
 - Check WandB for metrics
 
-### 🎯 **Key Metrics to Track:**
+###  **Key Metrics to Track:**
 - `sync_score` (should be ~1.0)
 - `tokens_per_sec` (throughput)
 - `loss` (should decrease)
@@ -601,10 +568,3 @@ rm -rf ~/.bittensor/wallets/templar_test
 
 # Start from Step 7 again
 ```
-
-### Check available disk space:
-```bash
-df -h /ephemeral
-```
-
-Good luck with your TP testing! 🚀
