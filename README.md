@@ -256,7 +256,7 @@ HF_TOKEN=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
 
 ## Step 6: (Optional) Pre-download Dataset
 
-The training dataset (~2 trillion tokens) lives in the cloud and downloads automatically during training. However, you can **pre-download** the first two shards (~860GB) to save time later.
+The training dataset lives in the cloud and downloads automatically during training. However, you can **pre-download** the first two shards (~860GB) to save time later.
 
 ### What is a "shard"?
 The dataset is split into multiple ~430GB chunks called "shards". The system automatically:
