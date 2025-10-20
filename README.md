@@ -469,14 +469,7 @@ TypeError: int() argument must be a string, a bytes-like object or a real number
 
 **If you want to try staking anyway:**
 ```bash
-uvx --from bittensor-cli btcli stake add \
-  --wallet.name templar_test \
-  --wallet.hotkey V1 \
-  --network local \
-  --netuid 2 \
-  --amount 100 \
-  --unsafe \
-  -y
+uvx --from bittensor-cli==9.7.1 btcli stake add --wallet.name templar_test --wallet.hotkey V1 --amount 1999 --netuid 2 --network local --unsafe -y
 ```
 *(When prompted for netuid, enter `2`)*
 
