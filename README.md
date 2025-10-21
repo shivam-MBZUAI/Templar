@@ -16,11 +16,11 @@ You're setting up a **local test environment** for Templar, a decentralized AI t
 - **Your Goal**: Test that all components work together correctly
 
 ```
-BLOCKCHAIN (Subtensor) - Local Chain
+BLOCKCHAIN (Subtensor Basic Setup) - Local Chain
     │
     └── Subnet 2 (Your Test Subnet)
         ├── Validator (1)
-        └── Miners (3+)
+        └── Miners (2)
 ```
 
 ---
