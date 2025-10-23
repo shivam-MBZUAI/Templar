@@ -422,6 +422,11 @@ Balance:
 ✅ Registered on netuid 2 with UID 2
 ```
 
+To register on a specific netuid
+```bash
+.venv/bin/btcli subnet register --wallet.name templar_test --wallet.hotkey V1 --netuid 2 --subtensor.chain_endpoint ws://127.0.0.1:9945 -y
+```
+
 ### 10.3 Stake TAO to Validator on netuid 2
 ```bash
 .venv/bin/btcli stake add --wallet.name templar_test --wallet.hotkey V1 --netuid 2 --subtensor.chain_endpoint ws://127.0.0.1:9945 --amount 100 --allow-partial-stake -y
