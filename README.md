@@ -321,11 +321,7 @@ Templar uses one **coldkey** (like a bank account) with multiple **hotkeys** (li
 ### 8.1 Create Coldkey
 ```bash
 cd ~/templar
-uvx --from bittensor-cli btcli wallet new_coldkey \
-  --wallet.name templar_test \
-  -p ~/.bittensor/wallets \
-  --n-words 12 \
-  --no-use-password
+.venv/bin/btcli wallet new_coldkey --wallet.name templar_test -p ~/.bittensor/wallets --n-words 12 --no-use-password
 ```
 
 ** Important:** Save the mnemonic phrase shown! It's needed to recover your wallet.
@@ -336,25 +332,13 @@ Create 3 hotkeys (M1, M2 for miners, V1 for validator):
 
 ```bash
 # Miner 1 hotkey
-uvx --from bittensor-cli btcli wallet new_hotkey \
-  --wallet.name templar_test \
-  --wallet.hotkey M1 \
-  --n-words 12 \
-  --no-use-password
+.venv/bin/btcli wallet new_hotkey --wallet.name templar_test --wallet.hotkey M1 --n-words 12 --no-use-password
 
 # Miner 2 hotkey
-uvx --from bittensor-cli btcli wallet new_hotkey \
-  --wallet.name templar_test \
-  --wallet.hotkey M2 \
-  --n-words 12 \
-  --no-use-password
+.venv/bin/btcli wallet new_hotkey --wallet.name templar_test --wallet.hotkey M2 --n-words 12 --no-use-password
 
 # Validator hotkey
-uvx --from bittensor-cli btcli wallet new_hotkey \
-  --wallet.name templar_test \
-  --wallet.hotkey V1 \
-  --n-words 12 \
-  --no-use-password
+.venv/bin/btcli wallet new_hotkey --wallet.name templar_test --wallet.hotkey V1 --n-words 12 --no-use-password
 ```
 
 ** Checkpoint:** You should now have:
@@ -375,28 +359,13 @@ Each command takes **30-90 seconds** to complete proof-of-work:
 
 ```bash
 # Fund M1
-uvx --from bittensor-cli --with torch btcli wallet faucet \
-  --wallet.name templar_test \
-  --wallet.hotkey M1 \
-  --max-successes 1 \
-  --network local \
-  -y
+.venv/bin/btcli wallet faucet --wallet.name templar_test --wallet.hotkey M1 --max-successes 1 --network local -y
 
 # Fund M2
-uvx --from bittensor-cli --with torch btcli wallet faucet \
-  --wallet.name templar_test \
-  --wallet.hotkey M2 \
-  --max-successes 1 \
-  --network local \
-  -y
+.venv/bin/btcli wallet faucet --wallet.name templar_test --wallet.hotkey M2 --max-successes 1 --network local -y
 
 # Fund V1
-uvx --from bittensor-cli --with torch btcli wallet faucet \
-  --wallet.name templar_test \
-  --wallet.hotkey V1 \
-  --max-successes 1 \
-  --network local \
-  -y
+.venv/bin/btcli wallet faucet --wallet.name templar_test --wallet.hotkey V1 --max-successes 1 --network local -y
 ```
 
 **Expected output for each:**
@@ -406,13 +375,9 @@ Balance: ‎0.0000 τ‎ ➡ ‎1,000.0000 τ‎
 
 ### 9.2 Verify All Balances
 ```bash
-uvx --from bittensor-cli btcli wallet balance \
-  --wallet.name templar_test \
-  --subtensor.chain_endpoint ws://127.0.0.1:9945
+.venv/bin/pip install bittensor-cli==9.7.1
+.venv/bin/btcli wallet balance --wallet.name templar_test --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
-
-**Troubleshooting:** If you still see `InvalidWorkBlock` errors, wait 30 seconds and retry. The blockchain may need time to stabilize after starting.
-
 ---
 
 ## Step 10: Create Subnet and Register Hotkeys
@@ -421,64 +386,51 @@ Now we create a test subnet and register all participants.
 
 ### 10.1 Create Subnet 2
 ```bash
-uvx --from bittensor-cli btcli subnet create \
-  --wallet.name templar_test \
-  --wallet.hotkey V1 \
-  --subtensor.chain_endpoint ws://127.0.0.1:9945 \
-  -y
+.venv/bin/btcli subnet create --wallet.name templar_test --wallet.hotkey V1 --subtensor.chain_endpoint ws://127.0.0.1:9945 -y
 ```
+Subnet name (optional) (): 
+GitHub repository URL (optional) (): 
+Contact email (optional) (): 
+Subnet URL (optional) (): 
+Discord handle (optional) (): 
+Description (optional) (): 
+Additional information (optional) (): 
+⠋ Connecting to Substrate: Network: custom, Chain: ws://127.0.0.1:9945...
+⠸ Connecting to Substrate: Network: custom, Chain: ws://127.0.0.1:9945...
+⠴ Connecting to Substrate: Network: custom, Chain: ws://127.0.0.1:9945...
+Subnet burn cost: ‎1,000.0000 τ‎
+✅ Registered subnetwork with netuid: 2
+
 
 ### 10.2 Register All Hotkeys to Subnet 2
 ```bash
 # Register Validator
-uvx --from bittensor-cli btcli subnet register \
-  --wallet.name templar_test \
-  --wallet.hotkey V1 \
-  --netuid 2 \
-  --subtensor.chain_endpoint ws://127.0.0.1:9945 \
-  -y
+.venv/bin/btcli subnet register --wallet.name templar_test --wallet.hotkey V1 --netuid 2 --subtensor.chain_endpoint ws://127.0.0.1:9945 -y
 
 # Register Miner 1
-uvx --from bittensor-cli btcli subnet register \
-  --wallet.name templar_test \
-  --wallet.hotkey M1 \
-  --netuid 2 \
-  --subtensor.chain_endpoint ws://127.0.0.1:9945 \
-  -y
+.venv/bin/btcli subnet register --wallet.name templar_test --wallet.hotkey M1 --netuid 2 --subtensor.chain_endpoint ws://127.0.0.1:9945 -y
+
+Balance:
+  ‎1,000.0893 τ‎ ➡ ‎999.0893 τ‎
+✅ Registered on netuid 2 with UID 1
 
 # Register Miner 2
-uvx --from bittensor-cli btcli subnet register \
-  --wallet.name templar_test \
-  --wallet.hotkey M2 \
-  --netuid 2 \
-  --subtensor.chain_endpoint ws://127.0.0.1:9945 \
-  -y
+.venv/bin/btcli subnet register --wallet.name templar_test --wallet.hotkey M2 --netuid 2 --subtensor.chain_endpoint ws://127.0.0.1:9945 -y
+
+Balance:
+  ‎1,000.0893 τ‎ ➡ ‎999.0893 τ‎
+✅ Registered on netuid 2 with UID 2
 ```
 
-### 10.3 Stake TAO to Validator (Optional - Has Known Issue)
-
-** Known Issue:** The current btcli has a compatibility issue with subtensor v2.0.11. The staking command fails with:
-```
-An unknown error has occurred: Pallet "Swap" not found
-TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
-```
-
-**Why this happens:** The local chain (v2.0.11) lacks the "Swap" pallet that newer btcli versions expect.
-
-**Impact:** For single-validator local testing, staking is **not required**. Your validator will still participate and set weights without it.
-
-**If you want to try staking anyway:**
+### 10.3 Stake TAO to Validator on netuid 2
 ```bash
-uvx --from bittensor-cli==9.7.1 btcli stake add --wallet.name templar_test --wallet.hotkey V1 --amount 1999 --netuid 2 --network local --unsafe -y
+.venv/bin/btcli stake add --wallet.name templar_test --wallet.hotkey V1 --netuid 2 --subtensor.chain_endpoint ws://127.0.0.1:9945 --amount 100 --allow-partial-stake -y
 ```
-*(When prompted for netuid, enter `2`)*
 
-**Future fix:** This issue won't affect production chains, only local testing with older chain versions.
 
 ### 10.4 Verify Registration
 ```bash
-uvx --from bittensor-cli btcli subnet list \
-  --subtensor.chain_endpoint ws://127.0.0.1:9945
+.venv/bin/btcli subnet list --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
 
 ---
