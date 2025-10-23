@@ -433,6 +433,10 @@ Balance:
 .venv/bin/btcli subnet list --subtensor.chain_endpoint ws://127.0.0.1:9945
 ```
 
+### 10.5 Check the metagraph for subnet 2 to see all registered neurons
+```bash
+.venv/bin/btcli subnet metagraph --netuid 2 --subtensor.chain_endpoint ws://127.0.0.1:9945
+```
 ---
 
 ## Step 11: Run Your Tests!
